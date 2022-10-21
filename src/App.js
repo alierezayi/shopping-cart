@@ -1,10 +1,15 @@
 import './App.css';
+
+//Components
+import Store from './components/Store';
+
+// Context
 import ProductContextProvider from "./context/ProductContextProvider"
 
 function App() {
   return (
     <ProductContextProvider>
-      App
+      <Store />
     </ProductContextProvider>
   );
 }
