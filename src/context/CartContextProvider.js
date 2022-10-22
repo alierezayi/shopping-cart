@@ -2,19 +2,17 @@ import React, { createContext, useReducer } from "react";
 
 const initialState = {
   selectedItems: [],
-  itemCounter: 0,
+  itemsCounter: 0,
   total: 0,
   checkout: false,
 };
 
 const cartReducer = (state, action) => {
+  console.log(state.selectedItems);
   switch (action.type) {
     case "ADD_ITEM":
-      const findSelectedItems = state.selectedItem.find(
-        (item) => item.id === action.payload.id
-      );
-      if (!findSelectedItems) {
-        state.selectedItem.push({
+      if (!state.selectedItems.find((item) => item.id === action.payload.id)) {
+        state.selectedItems.push({
           ...action.payload,
           quantity: 1,
         });
@@ -54,7 +52,7 @@ const cartReducer = (state, action) => {
     case "CHECKOUT":
       return {
         selectedItems: [],
-        itemCounter: 0,
+        itemsCounter: 0,
         total: 0,
         checkout: true,
       };
