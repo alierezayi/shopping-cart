@@ -1,5 +1,6 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Link, useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 // import axios from "axios";
 
 // Context
@@ -19,8 +20,8 @@ const ProductDetails = () => {
 
   const { id } = useParams();
 
-  const data = useContext(ProductsContext);
-  const product = data[id - 1];
+  const data = useSelector(state => state.productsState);
+  const product = data.products[id - 1];
   const { title, price, description, category, image } = product;
 
   return (
